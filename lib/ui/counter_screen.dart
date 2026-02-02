@@ -14,6 +14,20 @@ class _CounterScreenState extends State<CounterScreen> {
       appBar: AppBar(
         title: Text('Counter Example'),
       ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Text('0', style: TextStyle(fontSize: 60))),
+          Row(
+            mainAxisAlignment: .center,
+            children: [
+              ElevatedButton(onPressed: (){}, child: Text('Increment')),
+              SizedBox(width: 20),
+              ElevatedButton(onPressed: (){}, child: Text('Decrement'))
+            ],
+          )
+        ],
+      ),
     );
   }
 }
