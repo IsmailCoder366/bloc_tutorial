@@ -12,9 +12,18 @@ class FavouriteItemModel  extends Equatable{
   final bool isDeleting;
   final bool isFavourite;
 
+  FavouriteItemModel copyWith({String? id, int? value, bool? isDeleting, bool? isFavourite}) {
+    return FavouriteItemModel(
+        id: id ?? this.id,
+        value: value ?? this.value,
+        isDeleting: isDeleting ?? this.isDeleting,
+        isFavourite:  isFavourite ?? this.isFavourite
+
+    );
+  }
 
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props =>  [id, value, isDeleting, isFavourite];
 
 }
