@@ -1,11 +1,8 @@
 import 'package:bloc_tutorial/bloc/counter/counter_bloc.dart';
-import 'package:bloc_tutorial/equatable_testing.dart';
 import 'package:bloc_tutorial/repository/favourite_repository.dart';
-import 'package:bloc_tutorial/ui/counter_screen.dart';
 import 'package:bloc_tutorial/ui/favourate_app/favourate_app_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'bloc/favourate_app/favourate_app_bloc.dart';
 
 void main() {
@@ -15,7 +12,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -27,7 +24,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
               brightness: Brightness.dark
           ),
-          home: const FavourateAppScreen()
+          home:  FavourateAppScreen()
       ),
     );
   }
