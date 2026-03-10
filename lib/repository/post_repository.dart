@@ -11,15 +11,10 @@ class PostRepository {
     final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/comments'));
 
     if(response.statusCode == 200){
-      final List body = json.decode(response.body);
-      return body.map((e){
-        return PostModel(
-          id: e['id'] as int,
-          postId: e['postId'] as int,
-          email: e['email'] as String,
-          body: e['body'] as String
-        );
-      }).toList();
+      final List body = json.decode(response.body); // convert data in list form
+      return body
+          .map((e) => PostModel.fromJson(e)) // convert json to model class
+          .toList(); // show all the data in list
     }
     }on SocketException {
       throw Exception('error while fetching data');

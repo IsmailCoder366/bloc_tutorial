@@ -46,7 +46,9 @@ class _PostScreenState extends State<PostScreen> {
                     },
                   ),
                   Expanded(
-                    child: ListView.builder(
+                    child: state.searchMessage.isNotEmpty ? Center(child: Text(state.searchMessage.toString())) :
+
+                    ListView.builder(
                       itemCount: state.temPostList.isEmpty ? state.postList.length : state.temPostList.length,
                       itemBuilder: (context, index) {
                         if (state.temPostList.isNotEmpty) {
