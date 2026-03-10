@@ -47,7 +47,7 @@ class _PostScreenState extends State<PostScreen> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: state.postList.length,
+                      itemCount: state.temPostList.isEmpty ? state.postList.length : state.temPostList.length,
                       itemBuilder: (context, index) {
                         final item = state.postList[index];
                         return ListTile(
