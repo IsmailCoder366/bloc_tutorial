@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:bloc_tutorial/model/post_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,12 +11,12 @@ class PostRepository {
     final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/comments'));
 
     if(response.statusCode == 200){
-      final body = json.decode(response.body);
+      final List body = json.decode(response.body);
       return body.map((e){
         return PostModel(
-          postId: e['postId'],
-          email: e['email'],
-          body: e['body']
+          postId: e['postId'] as int,
+          email: e['email'] as String,
+          body: e['body'] as String
         );
       }).toList();
     }

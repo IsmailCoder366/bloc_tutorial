@@ -14,7 +14,6 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -26,34 +25,43 @@ class _PostScreenState extends State<PostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Post Screen'),
-      ),
+      appBar: AppBar(title: Text('Post Screen')),
       body: BlocBuilder<PostBloc, PostState>(
-          builder: (context, state){
-
-             switch(state.postStatus){
-              case PostStatus.loading :
-                return Center(child: CircularProgressIndicator());
-               case PostStatus.failure :
-                 return Text(state.message.toString());
-              case PostStatus.success :
-                return ListView.builder(
-                  itemCount: state.postList.length,
-                    itemBuilder: (context, index){
-
-                    final item = state.postList[index];
-                      return ListTile(
-                        title: Text(item.email.toString()),
-                        subtitle: Text(item.body.toString()),
-                      );
-                    });
-
-
-            }
-
-
-      }),
+        builder: (context, state) {
+          switch (state.postStatus) {
+            case PostStatus.loading:
+              return Center(child: CircularProgressIndicator());
+            case PostStatus.failure:
+              return Text(state.message.toString());
+            case PostStatus.success:
+              return Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Search with email',
+                      border: OutlineInputBorder()
+                    ),
+                    onChanged: (filterKey){
+                      context.read<PostBloc>().add(SearchItem(stSearch: filterKey));
+                    },
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: state.postList.length,
+                      itemBuilder: (context, index) {
+                        final item = state.postList[index];
+                        return ListTile(
+                          title: Text(item.email.toString()),
+                          subtitle: Text(item.body.toString()),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+          }
+        },
+      ),
     );
   }
 }
