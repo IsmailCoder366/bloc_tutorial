@@ -49,12 +49,24 @@ class _PostScreenState extends State<PostScreen> {
                     child: ListView.builder(
                       itemCount: state.temPostList.isEmpty ? state.postList.length : state.temPostList.length,
                       itemBuilder: (context, index) {
-                        final item = state.postList[index];
-                        return ListTile(
-                          title: Text(item.email.toString()),
-                          subtitle: Text(item.body.toString()),
-                        );
-                      },
+                        if (state.temPostList.isNotEmpty) {
+                          final item = state.temPostList[index];
+                          return Card(
+                            child: ListTile(
+                              title: Text(item.email.toString()),
+                              subtitle: Text(item.body.toString()),
+                            ),
+                          );
+
+                        }
+                        else {
+                          final item = state.postList[index];
+                          return ListTile(
+                            title: Text(item.email.toString()),
+                            subtitle: Text(item.body.toString()),
+                          );
+                        }
+                      }
                     ),
                   ),
                 ],
