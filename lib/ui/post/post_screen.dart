@@ -3,8 +3,8 @@ import 'package:bloc_tutorial/bloc/posts/post_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/posts/post_state.dart';
-import '../utils/enums.dart';
+import '../../bloc/posts/post_state.dart';
+import '../../utils/enums.dart';
 
 class PostScreen extends StatefulWidget {
   const PostScreen({super.key});

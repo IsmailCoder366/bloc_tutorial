@@ -3,7 +3,7 @@ import 'package:bloc_tutorial/bloc/counter/counter_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/counter/counter_state.dart';
+import '../../bloc/counter/counter_state.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
